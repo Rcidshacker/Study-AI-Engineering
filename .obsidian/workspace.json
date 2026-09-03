@@ -183,6 +183,12 @@
   },
   "active": "af081ec259da2def",
   "lastOpenFiles": [
+    "02 - Harness Engineering/Sandboxing and Permissions.md",
+    "04 - Graph Engineering/Graph vs Workflow.md",
+    "02 - Harness Engineering/Worktree Isolation.md",
+    "02 - Harness Engineering/Worktree Isolation.md.tmp.27760.dcb4c14ba220",
+    "02 - Harness Engineering/Instruction File Design.md",
+    "02 - Harness Engineering/Executable Rules Beat Written Rules.md",
     "00 - MOC/Agent Engineering MOC.md.tmp.27760.43ab6625b3b4",
     "10 - Sources/Glossary.md.tmp.27760.6c5c74683b6c",
     "09 - Scenarios/Scenarios MOC.md.tmp.27760.aea780cbb11b",
@@ -210,14 +216,8 @@
     "10 - Sources/Sources MOC.md",
     "03 - Loop Engineering/Stopping Conditions.md",
     "03 - Loop Engineering/Generator Evaluator Separation.md",
-    "05 - Claude Code/Claude Code Graphs.md",
     "05 - Claude Code/Claude Code Graphs.md.tmp.27760.bf810fbb4434",
-    "05 - Claude Code/Claude Code as a Harness.md",
-    "05 - Claude Code/Claude Code Loops.md",
     "05 - Claude Code/Claude Code Loops.md.tmp.27760.f34dedcb8eb5",
-    "06 - GitHub Repositories/GitHub - snarktank ralph.md",
-    "06 - GitHub Repositories/GitHub - SWE-agent mini-swe-agent.md.tmp.27760.852f999997e2",
-    "06 - GitHub Repositories/Repository Index.md.tmp.27760.413eaa0e6c22",
-    "03 - Loop Engineering/Ralph Loop.md.tmp.27760.eb92dea4016e"
+    "06 - GitHub Repositories/GitHub - SWE-agent mini-swe-agent.md.tmp.27760.852f999997e2"
   ]
 }
