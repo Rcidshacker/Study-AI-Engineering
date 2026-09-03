@@ -183,6 +183,9 @@
   },
   "active": "af081ec259da2def",
   "lastOpenFiles": [
+    "08 - Comparisons/Developer Tooling vs Harness Tooling.md",
+    "02 - Harness Engineering/Harness Ablation Testing.md",
+    "02 - Harness Engineering/Harness Failure Modes.md",
     "02 - Harness Engineering/Agent Observability.md",
     "02 - Harness Engineering/Clean State Ritual.md",
     "01 - Foundations/The Repository as System of Record.md",
@@ -212,10 +215,7 @@
     "01 - Foundations/External State.md",
     "01 - Foundations/External State.md.tmp.27760.97a489673b01",
     "02 - Harness Engineering/Feedback Quality.md",
-    "02 - Harness Engineering/Fix the Class Not the Instance.md",
     "02 - Harness Engineering/Fix the Class Not the Instance.md.tmp.27760.dd96039cac91",
-    "10 - Sources/Research Integrity in Agent-Assisted Research.md",
-    "02 - Harness Engineering/Feature List as Harness Primitive.md",
     "05 - Claude Code/Claude Code Graphs.md.tmp.27760.bf810fbb4434",
     "05 - Claude Code/Claude Code Loops.md.tmp.27760.f34dedcb8eb5",
     "06 - GitHub Repositories/GitHub - SWE-agent mini-swe-agent.md.tmp.27760.852f999997e2"
