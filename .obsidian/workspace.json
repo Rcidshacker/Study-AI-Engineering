@@ -190,6 +190,9 @@
   },
   "active": "af081ec259da2def",
   "lastOpenFiles": [
+    "09 - Scenarios/Autonomous Test Fixer.md",
+    "02 - Harness Engineering/Harness Beats Model Choice.md",
+    "01 - Foundations/Context Window as a Budget.md",
     "04 - Graph Engineering/Graph Engineering Origin and Fact-Check.md",
     "02 - Harness Engineering/When Not to Build a Harness.md",
     "01 - Foundations/External State.md",
@@ -222,9 +225,6 @@
     "02 - Harness Engineering/Inner Harness vs Outer Harness.md",
     "02 - Harness Engineering/Guides and Sensors.md",
     "02 - Harness Engineering/Harness Components.md",
-    "01 - Foundations/The Unified Mental Model.md",
-    "10 - Sources/Source - Learn Harness Engineering Course.md",
-    "10 - Sources/Source - Addy Osmani Loop Engineering.md",
     "_QUARANTINE_fabricated_2026-09-04"
   ]
 }
