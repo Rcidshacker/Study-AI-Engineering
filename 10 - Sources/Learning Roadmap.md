@@ -2,225 +2,248 @@
 title: Learning Roadmap
 aliases:
   - What should I learn next?
-  - Progression Guide
+  - Claude Code Learning Path
 tags:
-  - moc
-  - learning
   - roadmap
-  - ai-engineering
-  - agent-engineering
+  - learning
+  - evergreen
 status: evergreen
-created: 2026-09-03
-updated: 2026-09-03
+confidence: medium-high
+created: 2026-09-04
+updated: 2026-09-04
 ---
 
 # Learning Roadmap
 
-This document provides a structured progression from beginner to advanced to production usage of harness engineering, loop engineering, and graph engineering concepts in agentic software development, with specific application to Claude Code.
+> [!abstract] The question
+> *If I want to become genuinely good at building reliable AI coding-agent systems with
+> Claude Code, what should I learn and build?*
 
-## Phase 1: Beginner Foundation (Weeks 1-2)
+---
 
-### Goals
-- Understand core concepts
-- Set up basic Claude Code harness
-- Implement simple loops
-- Run first agentic workflows
+## The proposed progression, and how the research changes it
 
-### Topics to Study
-1. **AI Engineering Basics**
-   - Read: [[AI Engineering MOC]]
-   - Understand: What is an AI agent? Model + Harness = Agent
+The eight-level progression in the original brief was:
 
-2. **Harness Engineering Fundamentals**
-   - Read: [[Harness Engineering]] (focus on definition and components)
-   - Practice: Create a basic CLAUDE.md for a small project
-   - Experiment: Add one useful skill (e.g., a simple verification skill)
+```text
+Basic Claude Code → Context + Instructions → Skills + Tools → Harness → Loops
+→ Verification + Evaluation → Graph / Orchestration → Production
+```
 
-3. **Loop Engineering Basics**
-   - Read: [[Loop Engineering]] (focus on agent loop definition)
-   - Practice: Implement a simple test/fix loop using hooks
-   - Experiment: Use the `/loop` skill on a small writing task
+`[INFERENCE]` Two corrections, both grounded in the sources:
 
-4. **Claude Code Essentials**
-   - Read: [[Claude Code Architecture]]
-   - Practice: Set up hooks for linting on file save
-   - Experiment: Create a simple skill for a repetitive task
+**1. Verification moves from level 6 to level 2.** Every documented failure mode —
+[[False Completion]], one-shotting, weak end-to-end testing, this vault's own
+[[Research Integrity in Agent-Assisted Research|fabrication incident]] — is a verification
+failure. `[FACT]` [[Source - Learn Harness Engineering Course]] states the feedback subsystem
+"usually has the lowest investment and highest return." Learning skills and tools before you
+can tell whether the agent is right teaches you to move faster in an unknown direction.
 
-### Deliverables
-- A small project with basic CLAUDE.md
-- One custom skill (e.g., "greeting-skill" that outputs a greeting)
-- One hook (e.g., lint-on-save)
-- Documentation of what you learned
+**2. "Skills + Tools" is not a level; it is a technique used at several levels.** A skill is a
+delivery mechanism for instructions. Treating it as a rung encourages collecting extensions
+rather than closing gaps — the opposite of the docs' own advice to add extensions "as specific
+triggers come up."
 
-## Phase 2: Intermediate Application (Weeks 3-6)
+The corrected progression, with verification pulled forward and skills folded in:
 
-### Goals
-- Apply all three engineering paradigms
-- Build reliable agent workflows
-- Solve real problems with agent assistance
-- Begin integrating multiple concepts
+```text
+   1  Use it well                      ── a week
+   2  Verification first               ── a week      ← the rung people skip
+   3  Instructions and context         ── a week
+   4  The full harness                 ── two weeks
+   5  Your first loop                  ── a week
+   6  Autonomy and safety              ── two weeks
+   7  Graphs, if you need one          ── a week
+   8  Production                       ── ongoing
+```
 
-### Topics to Study
-1. **Applied Harness Engineering**
-   - Read: [[Harness Components]] and [[Harness Patterns]]
-   - Practice: Implement proper state persistence (claude-progress.md, DECISIONS.md)
-   - Experiment: Set up MCP servers for external services you use
+Each level below has an **exit test** — a thing you can do, not a thing you have read.
 
-2. **Applied Loop Engineering**
-   - Read: [[Agent Loop Patterns]] and [[Verification Loops]]
-   - Practice: Create a multi-layer verification loop (lint → test → build)
-   - Experiment: Build a research loop for a topic you're interested in
+---
 
-3. **Applied Graph Engineering**
-   - Read: [[Agent Graphs]] and [[Skill Graphs]]
-   - Practice: Design a simple skill routing graph
-   - Experiment: Create a subagent delegation graph for a small feature
+## Level 1 — Use it well
 
-4. **Claude Code Integration**
-   - Read: [[Claude Code Implementation Notes]]
-   - Practice: Combine skills, hooks, and subagents in a workflow
-   - Experiment: Use the verification-loop skill from the harness-engineering skill
+**Goal:** a working feel for the agentic loop and where it breaks.
 
-### Deliverables
-- A medium-sized project with:
-  - Comprehensive CLAUDE.md
-  - 3-5 custom skills covering different aspects
-  - Hooks for automation and verification
-  - State persistence files
-  - Evidence of loop and graph engineering application
-- A written reflection on what worked and what didn't
+Read [[Claude Code]] and the official *How Claude Code works*. Use it daily on real work with
+**no configuration at all**. Keep a plain text file of every time it does something wrong.
 
-## Phase 3: Advanced Implementation (Weeks 7-12)
+`[INFERENCE]` That file is the most valuable artefact you will produce this month. Every later
+level is a response to something in it, and a harness built from a checklist instead of from
+observed failures is the thing all three primary sources warn against.
 
-### Goals
-- Build production-grade agent systems
-- Optimize for reliability and performance
-- Contribute to the ecosystem
-- Handle complex, real-world scenarios
+**Exit test:** ten entries, each naming a specific failure.
 
-### Topics to Study
-1. **Advanced Harness Engineering**
-   - Read: [[Harness Failure Modes]] and [[Professional Software Engineers]] section
-   - Practice: Implement security boundaries and permission systems
-   - Experiment: Create observability and monitoring for your agent system
+---
 
-2. **Advanced Loop Engineering**
-   - Read: [[Loop Failure Modes]] and [[AI Engineers]] section
-   - Practice: Implement adaptive loops that learn from failures
-   - Experiment: Build human-in-the-loop systems with clear escalation paths
+## Level 2 — Verification first
 
-3. **Advanced Graph Engineering**
-   - Read: [[Graph Orchestration]] and [[AI Engineers]] section
-   - Practice: Build dynamic graphs that adapt based on execution
-   - Experiment: Create knowledge graphs for domain-specific reasoning
+**Goal:** make it possible for the agent to be told it is wrong.
 
-4. **Professional Claude Code Usage**
-   - Read: [[Production Coding Agent]] scenario
-   - Practice: Implement agent role specialization (planner, architect, tester, etc.)
-   - Experiment: Set up CI/CD integration with agent workflows
+Read: [[The Verification Gap]] · [[False Completion]] · [[Generator Evaluator Separation]].
 
-### Deliverables
-- A complex project demonstrating:
-  - Multi-agent orchestration with clear roles
-  - Comprehensive verification and feedback systems
-  - State persistence and recovery mechanisms
-  - Integration with external tools and services
-- A blog post or documentation explaining your system
-- A contribution to an open-source agent engineering project (skill, hook, documentation)
+Build:
+1. **One command** that verifies your project (`make check` / `npm run check`).
+2. Put it in `CLAUDE.md`.
+3. Take your three commonest failures and **rewrite the error messages** they produce to say
+   what to do instead — see [[Feedback Quality]].
 
-## Phase 4: Production Mastery (Ongoing)
+**Project:** take a repo with weak tests and add end-to-end tests for the three paths a user
+actually takes. Not unit tests. `[FACT]` Anthropic's agents passed unit tests and curl checks
+and still shipped features that did not work end-to-end.
 
-### Goals
-- Maintain and evolve production agent systems
-- Mentor others in agent engineering
-- Push the boundaries of what's possible
-- Stay current with emerging practices
+**Exit test:** you can name a change that breaks your app and a command that catches it.
 
-### Activities
-1. **System Maintenance**
-   - Regularly review and simplify your harness (remove what's not needed)
-   - Update skills and hooks based on new learnings
-   - Monitor system performance and reliability
+---
 
-2. **Community Engagement**
-   - Share your learnings through blogs, talks, or workshops
-   - Answer questions in agent engineering communities
-   - Contribute to shared resources (skills, hooks, patterns)
+## Level 3 — Instructions and context
 
-3. **Experimentation and Research**
-   - Try new approaches to harness, loop, and graph engineering
-   - Experiment with emerging MCP servers and tools
-   - Test cutting-edge agent frameworks and compare to Claude Code
+**Goal:** a map, not a manual.
 
-4. **Teaching and Mentoring**
-   - Help others set up their first agent harness
-   - Guide intermediate learners through common pitfalls
-   - Advise on architectural decisions for agent systems
+Read: [[Instruction File Design]] · [[Context Window as a Budget]] ·
+[[Source - OpenAI Harness Engineering]] (in full — it is the best single read in the field).
 
-### Ongoing Deliverables
-- A continuously improving agent system for your projects
-- Shared resources that others can use and build upon
-- A growing knowledge base of what works and what doesn't
-- Contributions to the agent engineering community
+Build a `CLAUDE.md` under 200 lines: commands, stack, hard constraints, pointers. Move
+anything task-specific into a skill or a path-scoped rule. Then start `docs/` as the system of
+record.
 
-## Resource Progression
+**Project:** take an existing 400-line instruction file and halve it, moving the rest into
+skills and rules. Measure whether adherence gets *better*. `[INFERENCE]` It usually does, and
+experiencing that is what makes the "too much guidance becomes non-guidance" finding real
+rather than theoretical.
 
-### Beginner Resources
-- Official Claude Code documentation
-- [[Harness Engineering]], [[Loop Engineering]], [[Graph Engineering]] core notes
-- [[Claude Code Architecture]]
-- Practical examples from [[Practical Examples MOC]]
+**Exit test:** a new contributor could run your project from `CLAUDE.md` alone.
 
-### Intermediate Resources
-- Repository analyses from [[GitHub Repository Index]]
-- [[Claude Code Implementation Notes]]
-- Scenario applications from [[Scenarios MOC]]
-- Comparison notes from [[Comparisons MOC]]
+---
 
-### Advanced Resources
-- Original sources linked in the [[Sources MOC]]
-- Engineering blogs from companies using agents at scale
-- Academic papers on agent systems and verification
-- Framework documentation (LangGraph, AutoGen, ADK) for comparison
+## Level 4 — The full harness
 
-## Assessment Checkpoints
+**Goal:** all five subsystems present.
 
-### After Phase 1 (Beginner)
-- [ ] Can explain the Model + Harness = Agent formula
-- [ ] Has created a functional CLAUDE.md
-- [ ] Has built at least one custom skill
-- [ ] Has used hooks for automation
-- [ ] Has experimented with the `/loop` skill
+Read: [[Harness Components]] · [[Guides and Sensors]] · [[Inner Harness vs Outer Harness]] ·
+[[Source - Harness Engineering for Coding Agent Users]].
 
-### After Phase 2 (Intermediate)
-- [ ] Has implemented state persistence mechanisms
-- [ ] Has built multi-layer verification loops
-- [ ] Has designed and used skill routing or agent delegation graphs
-- [ ] Has combined multiple engineering concepts in a workflow
-- [ ] Has solved a real problem using agent assistance
+Build, following [[Coding Agent Harness]]: `init.sh`, `feature_list.json`, `progress.md`, a
+`PostToolUse` hook running your checks, a permission allowlist.
 
-### After Phase 3 (Advanced)
-- [ ] Has built a production-grade agent system with multiple safeguards
-- [ ] Has implemented advanced patterns like adaptive loops or dynamic graphs
-- [ ] Has contributed back to the community
-- [ ] Can troubleshoot complex agent system issues
-- [ ] Has taught others agent engineering concepts
+Then audit with the 2×2: which of your controls are guides, which are sensors, which are
+computational, which inferential? **Every empty quadrant is a real gap.**
 
-### After Phase 4 (Production)
-- [ ] Maintains reliable agent systems in real projects
-- [ ] Continuously improves and simplifies harness over time
-- [ ] Actively shares knowledge and contributes to community
-- [ ] Stays current with emerging practices and technologies
+**Project:** run [[Harness Ablation Testing]] — remove one subsystem at a time, on a fixed
+task, and see what breaks. This is the exercise that converts belief into knowledge.
 
-## Final Thoughts
+**Exit test:** kill a session mid-task; a fresh one recovers position from files alone.
 
-Remember that agent engineering is as much about mindset as it is about technique. The most important skills are:
-1. **Systems thinking**: Understanding how components interact
-2. **Experimentation mindset**: Trying things, learning from results, iterating
-3. **Simplicity seeking**: Always asking "What's the simplest thing that could work?"
-4. **Feedback orientation**: Building systems that learn from their own performance
-5. **Human-centered design**: Remembering that agents serve human goals
+---
 
-Start small, focus on solving real problems, and let your understanding grow through practice. The journey from simple prompts to sophisticated agent systems is incremental—each small improvement builds toward greater capability.
+## Level 5 — Your first loop
 
-Happy engineering!
+**Goal:** get outside the loop.
+
+Read: [[Loop Engineering]] · [[Loop Types]] · [[Stopping Conditions]] ·
+[[Inner Loops and Outer Loops]].
+
+Build [[Autonomous Test Fixer]] — start with a `Stop` hook, then try `/goal`, then write the
+external shell-loop version yourself. `[INFERENCE]` **Write the shell loop even though the
+product has the feature.** Twenty lines of bash teaches you what `/goal` is doing; using
+`/goal` teaches you nothing about loops.
+
+Read `ralph.sh` and `default.py` from [[GitHub - snarktank ralph]] and
+[[GitHub - SWE-agent mini-swe-agent]]. Both are short. Read them completely.
+
+**Exit test:** your loop has four distinct exit statuses and reports which one fired.
+
+---
+
+## Level 6 — Autonomy and safety
+
+**Goal:** run unattended without dread.
+
+Read: [[Sandboxing and Permissions]] · [[Worktree Isolation]] · [[Clean State Ritual]] ·
+[[Source - Anthropic Effective Harnesses for Long-Running Agents]].
+
+Build: worktree or container isolation; a clean-state check at session end; escalation paths
+that produce a written question rather than a guess; budgets on everything.
+
+**Project:** run a loop overnight on a real backlog in an isolated worktree. Read the whole
+log in the morning. `[INFERENCE]` Reading a full unattended transcript is the single most
+educational hour in this roadmap — it is where the gap between what you *think* your harness
+constrains and what it *actually* constrains becomes visible.
+
+**Exit test:** you would let it run overnight on a repo you care about, and can say exactly
+why that is safe.
+
+---
+
+## Level 7 — Graphs, if you need one
+
+**Goal:** know when *not* to.
+
+Read: [[Graph Engineering]] · [[Graph vs Workflow]] · [[Claude Code Graphs]] ·
+[[Graph Engineering Origin and Fact-Check]] · Anthropic's *Building Effective Agents*.
+
+Build exactly one: **maker/checker**, where a reviewer subagent with a fresh context validates
+the main agent's work, fired by a hook. That is the graph with a genuine structural
+justification. See [[Generator Evaluator Separation]].
+
+**Project:** an audit workflow — one pass produces findings, a second set of agents
+adversarially verifies each one. Then measure how many findings survive verification.
+`[INFERENCE]` The survival rate is the most sobering number you will generate in this
+roadmap, and it is the empirical case for the whole verification layer.
+
+**Exit test:** you can name three tasks where a graph would be the *wrong* answer, and say
+what to build instead.
+
+---
+
+## Level 8 — Production
+
+**Goal:** it stays good.
+
+Read: [[Harness Debt and Garbage Collection]] · [[Continuous Drift Sensors]] ·
+[[Production Coding Agent]].
+
+Build: garbage-collection tasks on a cadence; drift sensors outside the change lifecycle;
+observability the agent itself can query; harness audits as a recurring chore.
+
+`[FACT]` OpenAI's team spent **20% of every week** cleaning up "AI slop" before they automated
+it into background tasks that scan for deviations and open targeted refactoring PRs. Plan for
+this from the start — it is not an optional late-stage concern.
+
+**Exit test:** your harness has an owner, a review cadence, and a debt tracker — the same
+things your code has.
+
+---
+
+## The three habits that matter more than the levels
+
+`[INFERENCE]` If you retain nothing else:
+
+1. **Fix the class, not the instance.** Third occurrence of a mistake ⇒ build a control. See
+   [[Fix the Class Not the Instance]].
+2. **Anything the agent reads is a prompt.** Error messages, test names, file names, log
+   lines. See [[Feedback Quality]].
+3. **Verify before you trust, including your own research.** The cheap check almost always
+   exists. See [[Research Integrity in Agent-Assisted Research]].
+
+---
+
+## What to read, in order
+
+1. [[Source - OpenAI Harness Engineering]] — the best single read
+2. [[Source - Anthropic Effective Harnesses for Long-Running Agents]] — the failure modes
+3. [[Source - Harness Engineering for Coding Agent Users]] — the best framework
+4. `default.py` in [[GitHub - SWE-agent mini-swe-agent]] — what a loop actually is
+5. `ralph.sh` + `CLAUDE.md` in [[GitHub - snarktank ralph]] — what an outer loop actually is
+6. [[Source - Learn Harness Engineering Course]] lectures 02, 13, 14 — the synthesis
+
+`[INFERENCE]` Six items, all readable in a weekend. The field is a year old; there is no large
+literature to work through. The scarce thing is not reading material — it is **hours spent
+reading your own agents' transcripts**.
+
+---
+
+## Related
+
+- [[AI Engineering MOC]] · [[Harness Loop Graph MOC]] · [[The Unified Mental Model]]
+- [[Coding Agent Harness]] · [[Autonomous Test Fixer]] · [[Sources MOC]]
