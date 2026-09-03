@@ -190,6 +190,8 @@
   },
   "active": "af081ec259da2def",
   "lastOpenFiles": [
+    "07 - Practical Examples",
+    "06 - GitHub Repositories",
     "README.md",
     "02 - Harness Engineering/Harness Engineering.md",
     "10 - Sources",
@@ -201,7 +203,6 @@
     "04 - Graph Engineering",
     "03 - Loop Engineering",
     "02 - Harness Engineering",
-    "01 - Foundations",
     "_ARCHIVE_unverified_2026-09-03/RESEARCH_COMPLETE_SUMMARY.md",
     "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
     "_ARCHIVE_unverified_2026-09-03/10 - Sources/Glossary.md",
@@ -224,7 +225,6 @@
     "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Context Engineering.md",
     "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent State.md",
     "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Orchestration.md",
-    "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Loops.md",
-    "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Engineering.md"
+    "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Loops.md"
   ]
 }
