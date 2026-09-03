@@ -190,6 +190,7 @@
   },
   "active": "af081ec259da2def",
   "lastOpenFiles": [
+    "README.md",
     "02 - Harness Engineering/Harness Engineering.md",
     "10 - Sources",
     "09 - Scenarios",
@@ -224,7 +225,6 @@
     "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent State.md",
     "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Orchestration.md",
     "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Loops.md",
-    "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Engineering.md",
-    "_ARCHIVE_unverified_2026-09-03/00 - MOC/Harness Loop Graph MOC.md"
+    "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Engineering.md"
   ]
 }
