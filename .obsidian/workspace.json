@@ -11,14 +11,10 @@
             "id": "af081ec259da2def",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Learning Roadmap"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -99,7 +95,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +113,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +155,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,6 +183,8 @@
   },
   "active": "af081ec259da2def",
   "lastOpenFiles": [
+    "_QUARANTINE_fabricated_2026-09-04/README.md",
+    "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
     "05 - Claude Code/Claude Code Hooks.md",
     "05 - Claude Code/Claude Code.md",
     "03 - Loop Engineering/Inner Loops and Outer Loops.md",
@@ -220,9 +215,7 @@
     "06 - GitHub Repositories/GitHub - SWE-agent mini-swe-agent.md.tmp.27760.852f999997e2",
     "06 - GitHub Repositories/Repository Index.md",
     "06 - GitHub Repositories/Repository Index.md.tmp.27760.413eaa0e6c22",
-    "03 - Loop Engineering/Ralph Loop.md",
     "03 - Loop Engineering/Ralph Loop.md.tmp.27760.eb92dea4016e",
-    "03 - Loop Engineering/Loop Types.md",
     "03 - Loop Engineering/Loop Types.md.tmp.27760.5af7fb81f61a",
     "02 - Harness Engineering/The Verification Gap.md.tmp.27760.22a61746fb16",
     "_QUARANTINE_fabricated_2026-09-04"
