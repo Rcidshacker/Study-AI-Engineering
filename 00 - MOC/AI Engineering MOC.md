@@ -1,93 +1,123 @@
 ---
 title: AI Engineering MOC
 aliases:
-  - Agent Engineering Map
-  - Harness Loop Graph Overview
+  - Start here
+  - Home
 tags:
   - moc
-  - ai-engineering
-  - agent-engineering
-  - harness-engineering
-  - loop-engineering
-  - graph-engineering
+  - hub
 status: evergreen
+verified: 2026-09-04
 created: 2026-09-03
-updated: 2026-09-03
+updated: 2026-09-04
 ---
 
 # AI Engineering MOC
 
-This Map of Content provides an overview of the AI engineering knowledge base, connecting the core concepts of harness engineering, loop engineering, and graph engineering with their applications in Claude Code and agentic systems.
+The central map. Everything else hangs off this.
 
-## Core Concepts
-
-### [[Harness Engineering]]
-The scaffolding that enables AI models to operate effectively as agents. Covers instructions, tools, environment, state, feedback, and orchestration.
-
-### [[Loop Engineering]]  
-The iterative cycles that agents execute to achieve goals through planning, execution, observation, verification, and correction.
-
-### [[Graph Engineering]]
-Explicit graph structures for organizing complex agent systems with nodes (agents/tools/steps) and edges (transitions/dependencies/state flow).
-
-## Claude Code Focus
-
-### [[Claude Code Architecture]]
-How Claude Code implements agentic workflows through its built-in harness and extension points (CLAUDE.md, skills, hooks, subagents, MCP).
-
-### [[Claude Code Skills]]
-Reusable knowledge and workflows that extend Claude Code's capabilities.
-
-### [[Claude Code Hooks]]
-Automation mechanisms that trigger at lifecycle events for verification, linting, and custom actions.
-
-### [[Claude Code Subagents]]
-Isolated context agents for specialized tasks and parallel work.
-
-### [[Claude Code MCP]]
-Standardized connections to external services and tools.
-
-## Practical Applications
-
-### [[Coding Agent Harness Example]]
-Complete example harness for a web application demonstrating all three engineering concepts.
-
-### [[Autonomous Test Fixer]]
-Example of a verification loop that automatically fixes failing tests.
-
-### [[Research Agent]]
-Example of a research loop for gathering and synthesizing technical information.
-
-### [[Skill Router]]
-Example of graph-based skill selection and routing.
-
-### [[Multi Agent Coding System]]
-Example of coordinated agent collaboration using graph patterns.
-
-## GitHub Repository Index
-
-See [[Repository Index]] for analyzed implementations of agent harnesses, loops, and graphs.
-
-## Scenarios
-
-See [[Scenarios MOC]] for practical situations where these engineering concepts are applied.
-
-## Comparisons
-
-See [[Comparisons MOC]] for detailed comparisons between approaches and frameworks.
-
-## Glossary
-
-See [[Glossary]] for definitions of key terms.
-
-## Learning Path
-
-See [[Learning Roadmap]] for progression from beginner to advanced to production usage.
-
-## Related Maps
-
-- [[Agent Engineering MOC]]
-- [[Claude Code MOC]]
-- [[Harness Loop Graph MOC]]
+> [!abstract] The one idea
+> `Agent = Model + Harness`. You cannot change the model. Everything you *can* change is the
+> harness, the loops that run on it, and the graphs that coordinate those loops — and each
+> layer can only be as good as the one beneath it.
 
 ---
+
+## Start here
+
+| If you want… | Read |
+|---|---|
+| The conceptual frame, corrected | [[The Unified Mental Model]] |
+| A plan | [[Learning Roadmap]] |
+| To build something today | [[Coding Agent Harness]] |
+| To know what is actually verified | [[Sources MOC]] |
+| Definitions, with attribution | [[Glossary]] |
+
+---
+
+## The five layers
+
+```text
+GRAPH     how several agents and loops cooperate      →  [[Graph Engineering]]
+LOOP      how one agent iterates to a goal            →  [[Loop Engineering]]
+HARNESS   what it can do, see, remember, be checked by → [[Harness Engineering]]
+CONTEXT   what it knows this turn                     →  [[Context Engineering]]
+PROMPT    how this turn is phrased                    →  [[Prompt Engineering vs Context Engineering]]
+```
+
+Cumulative, not successive. Each layer keeps the ones below it.
+
+---
+
+## By area
+
+### Foundations
+[[Agent Engineering]] · [[Agent Loops]] · [[Agent State]] · [[Agent Orchestration]] ·
+[[Context Engineering]] · [[Context Window as a Budget]] · [[External State]] ·
+[[The Unified Mental Model]]
+
+### The substrate
+[[Harness Engineering]] · [[Harness Architecture]] · [[Harness Components]] ·
+[[Guides and Sensors]] · [[Inner Harness vs Outer Harness]] · [[When Not to Build a Harness]] ·
+[[Harness Beats Model Choice]] · [[Lineage of the Word Harness]]
+
+### Verification — the part everything else depends on
+[[The Verification Gap]] · [[False Completion]] · [[Generator Evaluator Separation]] ·
+[[Feedback Quality]] · [[Feature List as Harness Primitive]] · [[Fix the Class Not the Instance]]
+
+### The runtime
+[[Loop Engineering]] · [[Loop Types]] · [[Inner Loops and Outer Loops]] ·
+[[Stopping Conditions]] · [[Ralph Loop]]
+
+### The system
+[[Graph Engineering]] · [[Graph Engineering Origin and Fact-Check]]
+
+### Claude Code
+[[Claude Code]] · [[Claude Code Architecture]] · [[Claude Code as a Harness]] ·
+[[Claude Code Loops]] · [[Claude Code Graphs]] · [[Claude Code Hooks]] ·
+[[Claude Code Implementation Notes]] — full map at [[Claude Code MOC]]
+
+### Applied
+[[Coding Agent Harness]] · [[Autonomous Test Fixer]] · [[Production Coding Agent]] ·
+[[Scenarios MOC]]
+
+### Comparisons
+[[Harness vs Loop vs Graph]] · [[Prompt Engineering vs Context Engineering]]
+
+### Evidence
+[[Sources MOC]] · [[Repository Index]] · [[Glossary]] ·
+[[Research Integrity in Agent-Assisted Research]]
+
+---
+
+## The six claims this vault is built on
+
+Each is traceable to a source note. Confidence is stated, not implied.
+
+| Claim | Confidence | Where |
+|---|---|---|
+| The environment around the model explains more outcome variance than model choice, on long tasks | medium-high — no controlled study exists | [[Harness Beats Model Choice]] |
+| Most agent unreliability reduces to the agent being unable to tell it was wrong | high | [[The Verification Gap]] |
+| The thing that did the work must not decide the work is done | high | [[Generator Evaluator Separation]] |
+| Anything the agent reads is a prompt, including error messages | high — two independent arrivals | [[Feedback Quality]] |
+| Harness, loop and graph are layers, not alternatives | medium-high | [[The Unified Mental Model]] |
+| Fix the class of failure, not the instance | high — three independent arrivals | [[Fix the Class Not the Instance]] |
+
+---
+
+## How to read this vault
+
+- `[FACT]` I read it in a primary source · `[PRACTICE]` community practice ·
+  `[OPINION]` attributed position · `[INFERENCE]` my synthesis ·
+  `[UNVERIFIED]` could not confirm · `[CAUTION]` real but caveated.
+- **Claims live in source notes; concept notes cite source notes.** One place to correct each
+  fact.
+- Every source note carries a `verified:` date. Treat anything months old as stale.
+- The vault records its own [[Research Integrity in Agent-Assisted Research|worst failure]]
+  rather than hiding it. That is deliberate.
+
+---
+
+## Related
+
+- [[Agent Engineering MOC]] · [[Claude Code MOC]] · [[Harness Loop Graph MOC]] · [[Sources MOC]]

@@ -1,117 +1,116 @@
 ---
 title: Agent Engineering MOC
 aliases:
-  - Agent Systems Overview
-  - Agent Architectures
+  - Agent engineering map
 tags:
   - moc
   - agent-engineering
-  - ai-engineering
-  - harness-engineering
-  - loop-engineering
-  - graph-engineering
 status: evergreen
+verified: 2026-09-04
 created: 2026-09-03
-updated: 2026-09-03
+updated: 2026-09-04
 ---
 
 # Agent Engineering MOC
 
-This map focuses on the engineering of AI agent systems, covering the core paradigms that enable reliable and capable agent behavior.
+The activity, rather than the layers. [[Harness Loop Graph MOC]] organises by *layer*; this
+one organises by **what you are trying to make happen**.
 
-## Foundational Concepts
-
-- [[Agent Engineering]]: Core principles of building AI agents
-- [[Context Engineering]]: Managing information access and relevance
-- [[Agent State]]: Memory, persistence, and state management
-- [[Agent Orchestration]]: Coordinating multiple agents and workflows
-
-## The Three Engineering Paradigms
-
-### [[Harness Engineering MOC]]
-The scaffolding and environment that enables agents to function reliably:
-- Instructions, tools, environment, state, feedback
-- [[Harness Engineering]]
-- [[Harness Architecture]]
-- [[Harness Components]]
-- [[Harness Patterns]]
-- [[Harness Failure Modes]]
-- [[Harness Examples]]
-
-### [[Loop Engineering MOC]]
-The iterative cycles that drive agent improvement and verification:
-- Planning → Execution → Observation → Verification → Correction
-- [[Loop Engineering]]
-- [[Agent Loop Patterns]]
-- [[Verification Loops]]
-- [[Retry Loops]]
-- [[Human In The Loop]]
-- [[Loop Failure Modes]]
-
-### [[Graph Engineering MOC]]
-Explicit graph structures for complex agent coordination:
-- Nodes, edges, state, and transitions
-- [[Graph Engineering]]
-- [[Agent Graphs]]
-- [[Skill Graphs]]
-- [[Tool Graphs]]
-- [[Knowledge Graphs]]
-- [[Graph Orchestration]]
-
-## Claude Code Specifics
-
-### [[Claude Code MOC]]
-How these paradigms manifest in Claude Code:
-- [[Claude Code Architecture]]
-- [[Claude Code Skills]]
-- [[Claude Code Hooks]]
-- [[Claude Code Agents]]
-- [[Claude Code MCP]]
-- [[Claude Code Harnesses]]
-
-## Practical Implementation
-
-### [[Practical Examples MOC]]
-Working examples and implementations:
-- [[Coding Agent Harness]]
-- [[Autonomous Test Fixer]]
-- [[Research Agent]]
-- [[Skill Router]]
-- [[Multi Agent Coding System]]
-
-### [[Scenarios MOC]]
-Real-world situations and how to address them:
-- [[Production Coding Agent]]
-- [[Vibe Coding Workflow]]
-- [[Autonomous Development Workflow]]
-- [[Multi Agent Development]]
-
-## Comparisons and Guidance
-
-### [[Comparisons MOC]]
-Evaluating different approaches:
-- [[Harness vs Loop vs Graph]]
-- [[Prompt Engineering vs Context Engineering]]
-- [[Claude Code vs Agent Frameworks]]
-
-### [[Learning Roadmap]]
-Progression from beginner to advanced:
-- [[What should I learn next?]]
-- [[Beginner → Advanced → Production]]
-
-## Sources and References
-
-### [[Sources MOC]]
-- [[Papers.md]]
-- [[Articles.md]]
-- [[Talks.md]]
-- [[GitHub Sources.md]]
-
-### [[Repository Index]]
-Analysis of key GitHub implementations:
-- [[Claude Code Repositories]]
-- [[Agent Harness Repositories]]
-- [[Agent Loop Repositories]]
-- [[Agent Graph Repositories]]
+> [!abstract] The job, in seven words `[FACT]`
+> "Design environments, specify intent, and build feedback loops."
+> — [[Source - OpenAI Harness Engineering]]
 
 ---
+
+## The concepts
+
+[[Agent Engineering]] — what an agent is, and what the job became
+[[Agent Loops]] — a model in a `while` loop with tools
+[[Agent State]] — the model has none; you supply all of it
+[[Agent Orchestration]] — coordinating several agents, and when not to
+[[Context Engineering]] — what is in scope when it decides
+[[The Unified Mental Model]] — how it all fits, corrected
+
+---
+
+## Organised by what you want
+
+### "Make it do the right thing"
+[[Instruction File Design|Instructions]] as a map not a manual · [[Context Window as a Budget]] ·
+[[Guides and Sensors]] — feedforward controls
+
+### "Make it able to act"
+[[Harness Components]] — tools and environment ·
+[[Sandboxing and Permissions]] · [[Worktree Isolation]]
+
+### "Make it know when it's wrong"
+[[The Verification Gap]] — the root of almost everything ·
+[[Feedback Quality]] · [[Generator Evaluator Separation]] · [[False Completion]]
+
+### "Make it remember"
+[[External State]] · [[Agent State]] · [[Feature List as Harness Primitive]]
+
+### "Make it run without me"
+[[Loop Engineering]] · [[Loop Types]] · [[Stopping Conditions]] · [[Ralph Loop]] ·
+[[Autonomous Test Fixer]]
+
+### "Make several of them cooperate"
+[[Agent Orchestration]] · [[Graph Engineering]] · [[Claude Code Graphs]]
+
+### "Make it stay good"
+[[Fix the Class Not the Instance]] · [[Harness Debt and Garbage Collection]] ·
+[[Production Coding Agent]]
+
+---
+
+## The failure taxonomy
+
+Every documented agent failure I found reduces to one of these five. Diagnose before building.
+
+| Failure | Root cause | Fix |
+|---|---|---|
+| Wrong conventions, wrong tools | it was never told | [[Instruction File Design]] |
+| Cannot proceed, asks you to run things | capability missing | [[Harness Components]] |
+| Ships broken code confidently | **cannot observe consequences** | [[The Verification Gap]] |
+| Declares victory early | no durable definition of done; grades itself | [[False Completion]] |
+| Re-solves solved problems | state lives in the transcript | [[External State]] |
+
+`[INFERENCE]` Row three is the majority case, and the one most often misdiagnosed as "the model
+isn't good enough."
+
+---
+
+## The three principles worth memorising `[FACT]`
+
+From [[Source - Anthropic Building Effective Agents]]:
+
+1. Maintain **simplicity** in your agent's design.
+2. Prioritise **transparency** by explicitly showing planning steps.
+3. Carefully craft your **agent-computer interface** through thorough tool documentation and
+   testing.
+
+`[INFERENCE]` Principle 3 is the underrated one: the ACI is every piece of text the agent
+reads — tool descriptions, error messages, file names, log output, test names. Designing that
+text *is* the job. See [[Feedback Quality]].
+
+---
+
+## What is genuinely new about this `[INFERENCE]`
+
+Loops, graphs, feedback control and state machines are decades old. Three things changed:
+
+1. The unit of work is **non-deterministic**, so the design goal is graceful recovery rather
+   than correctness by construction.
+2. The unit of work is **cheap and parallel**, so throughput can exceed human review capacity —
+   which changes merge philosophy and the value of mechanical enforcement.
+3. The unit of work **reads its own environment**, so the environment became a programming
+   surface. Writing a linter error message is now prompt engineering.
+
+The third is the genuinely novel one. See [[Executable Rules Beat Written Rules]].
+
+---
+
+## Related
+
+- [[AI Engineering MOC]] · [[Harness Loop Graph MOC]] · [[Claude Code MOC]] · [[Sources MOC]]
+- [[Learning Roadmap]] · [[Glossary]]
