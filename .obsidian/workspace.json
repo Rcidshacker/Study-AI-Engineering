@@ -1,0 +1,230 @@
+{
+  "main": {
+    "id": "d4adee16fbcac815",
+    "type": "split",
+    "children": [
+      {
+        "id": "b1538842840934d9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af081ec259da2def",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Learning Roadmap"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d2c73e9aa46ebaf1",
+    "type": "split",
+    "children": [
+      {
+        "id": "48d451c3c9292f41",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d6f28ad8620fd241",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "fe2cab01ca12405f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "faaab26e8678887d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bbe95246df91082f",
+    "type": "split",
+    "children": [
+      {
+        "id": "302c9a5b3c32b8f7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b30af4f378a393c9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "124c029d781d36be",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "ebce804e70b78dca",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "71fa7df1246cf414",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "5679b490e9c17e5d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "af081ec259da2def",
+  "lastOpenFiles": [
+    "02 - Harness Engineering/Harness Engineering.md",
+    "10 - Sources",
+    "09 - Scenarios",
+    "08 - Comparisons",
+    "07 - Implementations",
+    "06 - Repositories",
+    "05 - Claude Code",
+    "04 - Graph Engineering",
+    "03 - Loop Engineering",
+    "02 - Harness Engineering",
+    "01 - Foundations",
+    "_ARCHIVE_unverified_2026-09-03/RESEARCH_COMPLETE_SUMMARY.md",
+    "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
+    "_ARCHIVE_unverified_2026-09-03/10 - Sources/Glossary.md",
+    "_ARCHIVE_unverified_2026-09-03/09 - Scenarios/Scenarios MOC.md",
+    "_ARCHIVE_unverified_2026-09-03/09 - Scenarios/Production Coding Agent.md",
+    "_ARCHIVE_unverified_2026-09-03/08 - Comparisons/Prompt Engineering vs Context Engineering.md",
+    "_ARCHIVE_unverified_2026-09-03/08 - Comparisons/Harness vs Loop vs Graph.md",
+    "_ARCHIVE_unverified_2026-09-03/07 - Practical Examples/Coding Agent Harness.md",
+    "_ARCHIVE_unverified_2026-09-03/06 - GitHub Repositories/Repository Index.md",
+    "_ARCHIVE_unverified_2026-09-03/06 - GitHub Repositories/pilot-shell.md",
+    "_ARCHIVE_unverified_2026-09-03/06 - GitHub Repositories/loop-engineering.md",
+    "_ARCHIVE_unverified_2026-09-03/06 - GitHub Repositories/graph-engineering.md",
+    "_ARCHIVE_unverified_2026-09-03/06 - GitHub Repositories/ECC.md",
+    "_ARCHIVE_unverified_2026-09-03/05 - Claude Code/Claude Code Implementation Notes.md",
+    "_ARCHIVE_unverified_2026-09-03/05 - Claude Code/Claude Code Architecture.md",
+    "_ARCHIVE_unverified_2026-09-03/04 - Graph Engineering/Graph Engineering.md",
+    "_ARCHIVE_unverified_2026-09-03/03 - Loop Engineering/Loop Engineering.md",
+    "_ARCHIVE_unverified_2026-09-03/02 - Harness Engineering/Harness Engineering.md",
+    "_ARCHIVE_unverified_2026-09-03/02 - Harness Engineering/Harness Architecture.md",
+    "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Context Engineering.md",
+    "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent State.md",
+    "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Orchestration.md",
+    "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Loops.md",
+    "_ARCHIVE_unverified_2026-09-03/01 - Foundations/Agent Engineering.md",
+    "_ARCHIVE_unverified_2026-09-03/00 - MOC/Harness Loop Graph MOC.md"
+  ]
+}
