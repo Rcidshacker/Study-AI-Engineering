@@ -190,6 +190,10 @@
   },
   "active": "af081ec259da2def",
   "lastOpenFiles": [
+    "05 - Claude Code/Claude Code Implementation Notes.md",
+    "05 - Claude Code/Claude Code Architecture.md",
+    "04 - Graph Engineering/Graph Engineering.md",
+    "03 - Loop Engineering/Loop Engineering.md",
     "01 - Foundations/Context Engineering.md",
     "01 - Foundations/Agent Orchestration.md",
     "01 - Foundations/Agent Loops.md",
@@ -221,10 +225,6 @@
     "_ARCHIVE_unverified_2026-09-03/10 - Sources/Learning Roadmap.md",
     "_ARCHIVE_unverified_2026-09-03/10 - Sources/Glossary.md",
     "_ARCHIVE_unverified_2026-09-03/09 - Scenarios/Scenarios MOC.md",
-    "_ARCHIVE_unverified_2026-09-03/09 - Scenarios/Production Coding Agent.md",
-    "_ARCHIVE_unverified_2026-09-03/08 - Comparisons/Prompt Engineering vs Context Engineering.md",
-    "_ARCHIVE_unverified_2026-09-03/08 - Comparisons/Harness vs Loop vs Graph.md",
-    "_ARCHIVE_unverified_2026-09-03/07 - Practical Examples/Coding Agent Harness.md",
-    "_ARCHIVE_unverified_2026-09-03/06 - GitHub Repositories/Repository Index.md"
+    "_ARCHIVE_unverified_2026-09-03/09 - Scenarios/Production Coding Agent.md"
   ]
 }
