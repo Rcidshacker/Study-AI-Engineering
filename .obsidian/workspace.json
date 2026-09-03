@@ -183,6 +183,10 @@
   },
   "active": "af081ec259da2def",
   "lastOpenFiles": [
+    "02 - Harness Engineering/Agent Observability.md",
+    "02 - Harness Engineering/Clean State Ritual.md",
+    "01 - Foundations/The Repository as System of Record.md",
+    "02 - Harness Engineering/Harness Debt and Garbage Collection.md",
     "02 - Harness Engineering/Sandboxing and Permissions.md",
     "04 - Graph Engineering/Graph vs Workflow.md",
     "02 - Harness Engineering/Worktree Isolation.md",
@@ -212,10 +216,6 @@
     "02 - Harness Engineering/Fix the Class Not the Instance.md.tmp.27760.dd96039cac91",
     "10 - Sources/Research Integrity in Agent-Assisted Research.md",
     "02 - Harness Engineering/Feature List as Harness Primitive.md",
-    "02 - Harness Engineering/False Completion.md",
-    "10 - Sources/Sources MOC.md",
-    "03 - Loop Engineering/Stopping Conditions.md",
-    "03 - Loop Engineering/Generator Evaluator Separation.md",
     "05 - Claude Code/Claude Code Graphs.md.tmp.27760.bf810fbb4434",
     "05 - Claude Code/Claude Code Loops.md.tmp.27760.f34dedcb8eb5",
     "06 - GitHub Repositories/GitHub - SWE-agent mini-swe-agent.md.tmp.27760.852f999997e2"
