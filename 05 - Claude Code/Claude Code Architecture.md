@@ -1,274 +1,147 @@
 ---
 title: Claude Code Architecture
 aliases:
-  - Claude Code Internals
-  - Agentic Loop
+  - How Claude Code works
 tags:
   - claude-code
-  - ai-engineering
-  - agent-engineering
+  - architecture
+  - evergreen
 status: evergreen
+confidence: high
+verified: 2026-09-04
 created: 2026-09-03
-updated: 2026-09-03
+updated: 2026-09-04
 ---
 
 # Claude Code Architecture
 
-## Overview
+> [!abstract] One line
+> A model, five categories of tool, and a three-phase loop. The documentation calls the
+> product itself "the agentic harness around Claude," which settles where it sits in
+> [[The Unified Mental Model]].
 
-Claude Code is Anthropic's agentic coding assistant that combines a powerful language model with a sophisticated harness to enable autonomous software development workflows. Understanding its architecture is crucial for effectively extending and customizing it for specific use cases.
-
-## Core Components
-
-### 1. The Model
-- **Base**: Claude 3 series (Sonnet, Opus) or Claude 4 series
-- **Capabilities**: Reasoning, code generation, tool use, following complex instructions
-- **Limitations**: Stateless, finite context window, potential for hallucination
-
-### 2. The Harness (Everything Outside the Model)
-Claude Code's harness includes:
-
-#### Built-in Tools
-- **File Operations**: Read, write, edit, search files
-- **Web Search**: Access current information (when enabled)
-- **Code Execution**: Run commands, execute scripts
-- **Browser Automation**: Interact with web pages (via Interceptor skill)
-- **Git Integration**: Version control operations
-
-#### Agentic Loop
-The core execution cycle:
-1. **Understand**: Parse user request and current context
-2. **Plan**: Determine what needs to be done
-3. **Execute**: Use tools to perform actions
-4. **Observe**: See results of actions
-5. **Verify**: Check if goal is met (via built-in verification or hooks)
-6. **Iterate**: Continue or adjust based on verification
-
-### 3. Extension Points
-
-#### CLAUDE.md
-- **Purpose**: Persistent project-specific context
-- **Location**: Project root or parent directories
-- **Loading**: Additive - all CLAUDE.md files from working directory upward are loaded
-- **Best Practices**: 
-  - Keep concise (50-200 lines)
-  - Put critical constraints at top/bottom (avoid "lost in the middle")
-  - Use as a router to topic-specific docs
-  - Reference rather than duplicate information
-
-#### Skills
-- **Purpose**: Reusable knowledge and invocable workflows
-- **Location**: 
-  - Global: `~/.claude/skills/`
-  - Project: `.claude/skills/`
-  - Plugins: Inside plugin directories
-- **Structure**: 
-  - `SKILL.md` (frontmatter + workflows)
-  - `Workflows/` (specific procedures)
-  - `Tools/` (reusable functions)
-  - `References/` (documentation)
-  - `assets/` (template files)
-- **Invocation**: 
-  - Automatic (when relevant based on description)
-  - Manual (`/skill-name` command)
-  - Agent-initiated (subagents can invoke skills)
-
-#### Hooks
-- **Purpose**: Automate actions at lifecycle events
-- **Events**: 
-  - Pre-tool, Post-tool
-  - Pre-agent, Post-agent
-  - Session start/end
-  - Custom events
-- **Types**:
-  - Command hooks (shell scripts)
-  - HTTP hooks (web requests)
-  - MCP tool hooks (external service calls)
-  - Prompt hooks (modify agent prompts)
-- **Location**: `~/.claude/hooks/` or `.claude/hooks/`
-
-#### Subagents
-- **Purpose**: Isolated context for specialized tasks
-- **Types**:
-  - Built-in: planner, architect, code-reviewer, etc.
-  - Custom: User-defined specialized agents
-- **Communication**: 
-  - Main agent delegates task via `/agent` command or Skill invocation
-  - Subagent runs isolated loop
-  - Returns summary to main agent
-- **Isolation**: Separate context window prevents contamination
-
-#### MCP (Model Context Protocol)
-- **Purpose**: Standardized connection to external services and tools
-- **Servers**: 
-  - Local: `~/.claude/mcp/` or `.claude/mcp/`
-  - Remote: HTTP-based MCP servers
-- **Capabilities**: 
-  - Exposes external tools as if they were built-in
-  - Standardized tool description format
-  - Bidirectional communication
-- **Common Servers**: 
-  - Filesystem, Git, GitHub, Docker, Kubernetes, databases
-
-#### Plugins
-- **Purpose**: Package and distribute complete Claude Code setups
-- **Components**: 
-  - Skills, hooks, MCP configs, agents, commands
-  - Metadata (`plugin.json`, `marketplace.json`)
-- **Installation**: 
-  - `claude plugin add <name>`
-  - Manual copy to `~/.claude/plugins/`
-
-#### Commands
-- **Purpose**: Custom slash commands for frequent operations
-- **Location**: `~/.claude/commands/` or `.claude/commands/`
-- **Types**:
-  - Command skills (disable-model-invocation: true)
-  - Shell scripts
-  - Complex workflows
-
-## Configuration Hierarchy
-
-Settings are resolved in this order (later overrides earlier):
-1. Built-in defaults
-2. Global user settings (`~/.claude/settings.json`)
-3. Project settings (`.claude/settings.json`)
-4. CLI flags
-5. Session-specific overrides
-
-## Context Management
-
-### Context Sources
-1. **System Prompt**: Core behavior and capabilities
-2. **CLAUDE.md Files**: Project conventions and instructions
-3. **Skills**: Loaded on demand when relevant
-4. **Conversation History**: Current session messages
-5. **Tool Results**: Outputs from previous actions
-6. **MCP Server State**: External service data
-7. **Subagent Results**: Summaries from delegated work
-
-### Context Limitations
-- **Window Size**: Limited by model's context capacity
-- **Compaction**: Automatic summarization when window fills
-- **Strategies**: 
-  - Recent messages preserved in full
-  - Older content summarized or dropped
-  - Important facts can be preserved in CLAUDE.md or skills
-  - Cross-session state via files (`claude-progress.md`, `DECISIONS.md`)
-
-## Execution Model
-
-### Single Agent Mode
-- Default behavior: one main agent handling the task
-- Can invoke subagents for isolated work
-- Maintains single conversation thread
-
-### Multi-Agent Patterns
-- **Delegation**: Main agent → Subagent → Result
-- **Parallelization**: Multiple subagents working simultaneously
-- **Pipelines**: Output of one agent feeds into another
-- **Feedback Loops**: Agent A checks work of Agent B
-
-## Verification and Feedback Mechanisms
-
-### Built-in Verification
-- Basic syntax checking for supported languages
-- Simple test detection (look for test files/commands)
-
-### Extended Verification via Hooks
-- Pre-tool: Validate inputs, check preconditions
-- Post-tool: Run tests, linting, security scans
-- Custom: Any verification logic implementable in scripts
-
-### Evaluator Pattern
-- Separate agent/judgment for checking work
-- Critical for avoiding self-assessment bias
-- Can be different model or same model with different prompt
-
-## State Persistence
-
-### Within Session
-- Conversation history
-- Tool execution results
-- Agent internal state
-
-### Across Sessions
-- **Files**: `claude-progress.md`, `DECISIONS.md`, feature lists
-- **Git**: Commits as checkpoints
-- **External**: Databases, vector stores via MCP
-- **Skills**: Knowledge that persists in skill definitions
-
-## Relationship to Engineering Concepts
-
-### Harness Engineering
-Claude Code itself is a harness. Users extend it via:
-- CLAUDE.md (instructions)
-- Skills (tools/workflows)
-- Hooks (automation/verification)
-- MCP (external connections)
-- Subagents (orchestration)
-
-### Loop Engineering
-Inherent in Claude Code's design:
-- Agentic loop: plan-act-observe-verify
-- Custom loops via:
-  - Hooks creating feedback cycles
-  - Skills defining iterative procedures
-  - Subagents with looping behavior
-  - `/loop` skill for explicit iteration
-
-### Graph Engineering
-Can be implemented through:
-- **Subagent delegation graphs**: Main agent → [specialized subagents] → Result
-- **Skill routing graphs**: Agent decides which skill to invoke based on context
-- **Workflow graphs**: Complex procedures encoded in skills
-- **External orchestration**: Using MCP to connect to LangGraph/AutoGen
-
-## Customization Best Practices
-
-### Start Small
-1. Begin with CLAUDE.md for project conventions
-2. Add skills for repetitive workflows
-3. Use hooks for automation (linting, testing)
-4. Explore MCP for external integrations
-5. Consider subagents for complex delegations
-
-### Maintainability
-- Version control your `.claude/` directory
-- Document skill dependencies
-- Keep skills focused and single-purpose
-- Test extensions in isolation
-- Use clear naming conventions
-
-### Performance
-- Be mindful of context usage
-- Lazy load heavy skills only when needed
-- Cache expensive operations
-- Consider token costs of frequent tool use
-
-## Troubleshooting
-
-### Common Issues
-- **Context overflow**: Too much information in CLAUDE.md/skills
-- **Tool permission errors**: Missing MCP server or incorrect config
-- **Skill not invoking**: Incorrect description or frontmatter
-- **Hooks not firing**: Wrong matcher or event type
-- **Subagent isolation problems**: Unexpected context sharing
-
-### Debugging Approaches
-1. Check Claude Code logs (`~/.claude/daemon.log`)
-2. Use verbose mode for detailed execution traces
-3. Test components in isolation
-4. Verify file paths and permissions
-5. Start with minimal configuration and add incrementally
-
-## References
-
-1. Claude Code Documentation: https://code.claude.com/docs/
-2. Steering Claude Code: https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more
-3. Hooks Reference: https://code.claude.com/docs/en/hooks
-4. Skills System: https://code.claude.com/docs/en/skills
-5. MCP Documentation: https://code.claude.com/docs/en/mcp
-6. Subagents Guide: https://code.claude.com/docs/en/sub-agents
+> [!info] Verification
+> Everything marked `[FACT]` was read from the official **"How Claude Code works"** page at
+> `code.claude.com/docs/en/how-claude-code-works.md` on **2026-09-04**. The earlier version of
+> this note was uncited.
 
 ---
+
+## The three-phase loop `[FACT]`
+
+> "When you give Claude a task, it works through three phases: **gather context**, **take
+> action**, and **verify results**. These phases blend together."
+
+The loop is adaptive rather than fixed:
+
+> "A question about your codebase might only need context gathering. A bug fix cycles through
+> all three phases repeatedly. A refactor might involve extensive verification. Claude decides
+> what each step requires based on what it learned from the previous step, chaining dozens of
+> actions together and course-correcting along the way."
+
+`[INFERENCE]` Note that **verify** is a first-class phase in the vendor's own model, not an
+afterthought — but the phase only does work if the environment gives it something to verify
+*with*. The loop's shape is Anthropic's; the signal quality is yours. That is the whole
+argument of [[The Verification Gap]].
+
+---
+
+## The vendor's own framing `[FACT]`
+
+> "The agentic loop is powered by two components: **models** that reason and **tools** that
+> act. **Claude Code serves as the agentic harness around Claude**: it provides the tools,
+> context management, and execution environment that turn a language model into a capable
+> coding agent."
+
+This is `Agent = Model + Harness` in the product documentation, and it is the strongest
+available evidence for placing the harness *beneath* the loop rather than above it. See
+[[Lineage of the Word Harness]] and [[The Unified Mental Model]].
+
+---
+
+## Models `[FACT]`
+
+Multiple models with different trade-offs, switchable with `/model` mid-session or
+`claude --model <name>` at launch. The docs' guidance: "Sonnet handles most coding tasks well.
+Opus provides stronger reasoning for complex architectural decisions."
+
+And a clarification worth keeping: "When this guide says 'Claude chooses' or 'Claude decides,'
+it's the model doing the reasoning."
+
+`[INFERENCE]` Model choice matters most for the **inferential** half of your controls — an
+LLM-as-judge, a reviewer subagent, `/goal`'s completion check. A weak judge cannot be fixed by
+a strong harness. Computational controls are model-independent by construction. See
+[[Guides and Sensors]] and [[Harness Beats Model Choice]].
+
+---
+
+## Tools — the five categories `[FACT]`
+
+> "Tools are what make Claude Code agentic. Without tools, Claude can only respond with text."
+
+| Category | What Claude can do |
+|---|---|
+| **File operations** | read, edit, create, rename, reorganise |
+| **Search** | find files by pattern, search content with regex, explore codebases |
+| **Execution** | run shell commands, start servers, run tests, use git |
+| **Web** | search, fetch documentation, look up error messages |
+| **Code intelligence** | language-server navigation and live diagnostics |
+
+> "Each tool use returns information that feeds back into the loop, informing Claude's next
+> decision."
+
+`[INFERENCE]` That sentence is the architectural reason [[Feedback Quality]] matters so much.
+**Tool output is not a log; it is the next turn's input.** A command that prints a bare
+`exit 1` and a command that prints a bare failure plus the remediation cost the same to run
+and differ enormously in what the next step does.
+
+Note also that **code intelligence is a computational sensor you get nearly free** in a typed
+language — live type errors, delivered continuously, without you building anything.
+
+---
+
+## Execution, sessions, and safety `[FACT]`
+
+The page documents, each with its own section:
+
+- **Execution environments and interfaces** — terminal, IDE, desktop, web
+- **Sessions** — work across branches, resume or fork
+- **The context window** — and its management
+- **Checkpoints** — "undo changes with checkpoints"
+- **Permissions** — "control what Claude can do"
+
+`[INFERENCE]` Checkpoints and git are two different undo mechanisms at two different layers.
+Checkpoints are session-scoped and product-managed; git commits are durable, reviewable, and
+readable by the agent itself. For unattended loops, **commit** — see [[Agent State]].
+
+---
+
+## The human is inside the loop by default `[FACT]`
+
+> "You're part of this loop too. You can interrupt at any point to steer Claude in a different
+> direction, provide additional context, or ask it to try a different approach. Claude works
+> autonomously but stays responsive to your input."
+
+`[INFERENCE]` This is the default *and* the bottleneck: your attention is the system's
+throughput limit. Every technique in [[Loop Engineering]] exists to move you out of that
+position. The docs' own advice for working within it — "**delegate, don't dictate**" and "it's
+a conversation" — is the right posture until you have the verification to leave the loop
+safely.
+
+---
+
+## What you can and cannot change
+
+| | Yours? |
+|---|---|
+| The three-phase loop, tool implementations, system prompt, compaction strategy | **no** — inner harness |
+| Instructions, skills, MCP servers, hooks, permissions, subagents, tests, environment | **yes** — outer harness |
+
+See [[Inner Harness vs Outer Harness]] and [[Claude Code as a Harness]].
+
+---
+
+## Related
+
+- [[Claude Code]] · [[Claude Code as a Harness]] · [[Claude Code Loops]] · [[Claude Code Graphs]]
+- [[Agent Loops]] · [[The Unified Mental Model]] · [[Claude Code MOC]]
