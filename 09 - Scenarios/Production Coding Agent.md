@@ -1,345 +1,168 @@
 ---
 title: Production Coding Agent
 aliases:
-  - Reliable Coding Agent Workflow
-  - Production Agent System
+  - Scenario 8
+  - Production harness
 tags:
   - scenario
+  - harness-engineering
   - production
-  - ai-engineering
-  - agent-engineering
+  - evergreen
 status: evergreen
+confidence: medium-high
+verified: 2026-09-04
 created: 2026-09-03
-updated: 2026-09-03
+updated: 2026-09-04
 ---
 
-# Production Coding Agent
+# Scenario — Production Coding Agent
 
-## Problem Statement
-"I want a reliable coding-agent workflow for a production application." This scenario addresses building a trustworthy, maintainable agent system suitable for professional software development in a production environment.
+> [!abstract] The task
+> A real software project, a real team, agents doing most of the writing. What has to be true
+> for that to be responsible rather than reckless?
 
-## Engineering Application
-
-### Harness Engineering
-- **Instructions**: Comprehensive CLAUDE.md with production standards, security policies, and compliance requirements
-- **Tools**: Curated set of safe, verified tools via MCP servers (GitHub, Docker, Kubernetes, security scanners)
-- **Environment**: Reproducible setup with exact version pinning, containerized dependencies, and validated build processes
-- **State**: Persistent decision logs, audit trails, and version-controlled knowledge base
-- **Feedback**: Multi-layer verification with automated gates, security scans, performance benchmarks, and compliance checks
-- **Orchestration**: Defined agent roles, clear escalation paths, and human oversight checkpoints
-
-### Loop Engineering
-- **Verification Loops**: 
-  - Layer 1: Linting + type checking + security scanning (on every edit)
-  - Layer 2: Unit/integration tests + coverage requirements (80%+)
-  - Layer 3: End-to-end user flows + performance benchmarks + security penetration testing
-- **Maker-Checker Separation**: 
-  - Implementation agent vs. verification agent (potentially different models)
-  - Automated PR review bots as additional checkers
-  - Human review for security-critical changes
-- **Improvement Loops**: 
-  - Retrospective analysis of agent failures to improve harness
-  - Continuous learning from code review feedback
-  - Adaptive verification based on historical failure patterns
-
-### Graph Engineering
-- **Agent Orchestration Graph**:
-  ```
-  [Product Manager] → [Architect] → [Tech Lead]
-        ↓                   ↓              ↓
-  [Frontend Team] ← [API Designer] → [Backend Team]
-        ↓                   ↓              ↓
-  [QA Lead] ← [Test Automation Engineer] ← [DevOps Engineer]
-        ↓
-  [Release Manager] → [Monitoring Engineer]
-  ```
-- **Skill/Capability Graph**: 
-  - Nodes: Specialized skills (security, performance, compliance, etc.)
-  - Edges: Prerequisites and compatibility relationships
-  - Routing: Dynamic skill selection based on task analysis and risk assessment
-- **State Flow Graph**: 
-  - Requirements → Design → Implementation → Testing → Deployment → Monitoring
-  - Feedback loops from monitoring to planning for continuous improvement
-  - Emergency response paths for production incidents
-
-## Claude Code Implementation
-
-### Directory Structure
-```text
-production-app/
-├── .claude/
-│   ├── CLAUDE.md
-│   ├── agents/
-│   │   ├── product-manager.md
-│   │   ├── architect.md
-│   │   ├── tech-lead.md
-│   │   ├── frontend-dev.md
-│   │   ├── backend-dev.md
-│   │   ├── qa-engineer.md
-│   │   ├── devops-engineer.md
-│   │   ├── security-specialist.md
-│   │   └── release-manager.md
-│   ├── skills/
-│   │   ├── security-audit/
-│   │   ├── performance-benchmark/
-│   │   ├── compliance-check/
-│   │   ├── verification-loop/
-│   │   └── incident-response/
-│   ├── hooks/
-│   │   ├── security-pre-commit.json
-│   │   ├── performance-post-deploy.json
-│   │   └── compliance-pre-merge.json
-│   ├── mcp/
-│   │   ├── github-enterprise.json
-│   │   ├── docker-registry.json
-│   │   ├── kubernetes-cluster.json
-│   │   ├── security-scanner.json
-│   │   └── monitoring-service.json
-│   └── commands/
-│       ├── /deploy
-│       ├── /security-audit
-│       └── /incident-response
-├── docs/
-│   ├── ARCHITECTURE.md
-│   ├── SECURITY-POLICY.md
-│   └── COMPLIANCE-REQUIREMENTS.md
-├── src/
-├── tests/
-│   ├── unit/
-│   ├── integration/
-│   ├── security/
-│   └── performance/
-├── DECISIONS.md
-├── claude-progress.md
-├── feature-list.json
-└── compliance-checklist.json
-```
-
-### Key Components
-
-#### .claude/CLAUDE.md
-```markdown
-# Production Application - Claude Code Configuration
-
-**Environment**: Production-grade web service handling PII and financial data
-**Compliance**: SOC 2 Type II, GDPR, PCI DSS applicable components
-**Security Standards**: 
-- Zero trust architecture principle
-- Defense in depth
-- Least privilege access
-- Secure by default
-- Regular penetration testing
-
-**Development Practices**:
-- Trunk-based development with feature flags
-- Immutable infrastructure
-- Blue-green deployments
-- Observability-first design
-- ChatOps for incident response
-
-**Verification Requirements**:
-1. Security scan must pass (SAST/DAST)
-2. Performance benchmarks within 5% of baseline
-3. All tests pass with 90%+ coverage
-4. Manual security review for auth/crypto changes
-5. Compliance checklist completion
-
-**Escalation Path**:
-Agent → Tech Lead → Security Specialist → Architecture Board
-```
-
-#### Agent Definitions (examples)
-
-##### .claude/agents/security-specialist.md
-```markdown
-# Security Specialist Agent
-
-**Role**: Identify and mitigate security vulnerabilities
-**When to invoke**: Security-sensitive code changes, vulnerability assessments, compliance audits
-**Tools**: 
-- Security scanner MCP
-- Dependency checker
-- Secret detection tools
-- Cryptography validator
-**Output**: Security report with severity ratings and remediation steps
-
-## Workflow
-1. Understand security context from CLAUDE.md and SECURITY-POLICY.md
-2. Identify attack surfaces and threat models
-3. Run automated security scans
-4. Manual review of complex security logic
-5. Generate remediation recommendations
-6. Verify fixes through re-scanning
-```
-
-##### .claude/agents/devops-engineer.md
-```markdown
-# DevOps Engineer Agent
-
-**Role**: Manage deployment, infrastructure, and observability
-**When to invoke**: Release preparation, infrastructure changes, incident response
-**Tools**: 
-- Kubernetes MCP
-- Docker registry MCP
-- Monitoring service MCP
-- Logging and tracing systems
-**Output**: Deployment plan, rollback procedures, observability coverage
-
-## Workflow
-1. Review infrastructure-as-code changes
-2. Validate deployment strategies
-3. Check observability coverage (metrics, logs, traces)
-4. Verify rollback procedures
-5. Coordinate release timing with monitoring engineer
-6. Post-deployment validation
-```
-
-#### Skills
-
-##### .claude/skills/security-audit/SKILL.md
-```markdown
----
-name: security-audit
-description: "Perform comprehensive security audit of codebase"
-disable-model-invocation: true
----
-
-# Security Audit Skill
-
-Implements a thorough security scanning workflow.
-```
-
-##### .claude/skills/security-audit/Workflows/full-audit.md
-```markdown
-## Full Security Audit Workflow
-
-### Phase 1: Static Analysis
-1. Run SAST tools via security-scanner MCP
-2. Analyze results for:
-   - Injection vulnerabilities
-   - Authentication bypasses
-   - Authorization flaws
-   - Cryptographic issues
-   - Information leaks
-3. Assign severity ratings (CVSS)
-4. Generate remediation tickets for high/critical issues
-
-### Phase 2: Dependency Scanning
-1. Check all dependencies for known vulnerabilities
-2. Identify outdated packages
-3. Recommend updates with impact analysis
-
-### Phase 3: Dynamic Analysis
-1. Deploy to staging environment
-2. Run DAST scans against running application
-3. Test for runtime vulnerabilities
-4. Validate security controls
-
-### Phase 4: Manual Review
-1. Security specialist review of complex logic
-2. Threat modeling session
-3. Penetration testing scope definition
-4. Final security sign-off
-```
-
-#### Hooks
-
-##### .claude/hooks/security-pre-commit.json
-```json
-{
-  "matcher": "tool in [\\\"Edit\\\", \\\"Write\\\", \\\"NotebookEdit\\\"] && tool_input.file_path matches \\\"\\\\\\\\.(ts|tsx|js|jsx|py|java)$\\\"",
-  "hooks": [{
-    "type": "mcp",
-    "server": "security-scanner",
-    "tool": "scan_file",
-    "arguments": {
-      "file_path": "$file_path",
-      "fail_on_high_severity": true,
-      "block_commit": true
-    }
-  }]
-}
-```
-
-##### .claude/hooks/compliance-pre-merge.json
-```json
-{
-  "matcher": "tool == \\\"GitBranchMerge\\\"",
-  "hooks": [{
-    "type": "command",
-    "command": "python .claude/scripts/check-compliance.py && echo '[Hook] Compliance check passed' || (echo '[Hook] Compliance check FAILED' && exit 1)"
-  }]
-}
-```
-
-#### Commands
-
-##### .claude/commands/deploy
-```markdown
-#!/usr/bin/env Skill("devops-engineer")
-To deploy to production:
-1. Verify all security gates passed
-2. Confirm performance benchmarks met
-3. Ensure observability coverage
-4. Execute blue-green deployment
-5. Validate with smoke tests
-6. Enable feature flags gradually
-7. Monitor for 15 minutes before full cutover
-```
-
-### Why This Works
-
-1. **Defense in Depth**: Multiple independent verification layers reduce single points of failure
-2. **Clear Accountability**: Defined agent roles and escalation paths prevent diffusion of responsibility
-3. **Continuous Verification**: Automated gates catch issues early in the development cycle
-4. **Production-Ready Practices**: Incorporates established DevOps, SRE, and security methodologies
-5. **Adaptability**: Feedback loops allow the system to improve based on real-world performance
-
-### Failure Modes and Mitigations
-
-#### Over-Automation Risk
-- **Risk**: Too much automation leading to complacency
-- **Mitigation**: Required human review for security-critical changes, regular manual penetration testing
-
-#### Verification Bottlenecks
-- **Risk**: Slow verification processes slowing development
-- **Mitigation**: Parallel verification, incremental testing, smart test selection based on change impact
-
-#### Alert Fatigue
-- **Risk**: Too many false positives causing teams to ignore alerts
-- **Mitigation**: Tuning verification thresholds, baselining normal behavior, focusing on actionable alerts
-
-#### Context Overflow
-- **Risk**: Too much information in CLAUDE.md reducing effectiveness
-- **Mitigation**: Modular documentation with clear hierarchy, regular pruning of outdated information
-
-#### Skill/Role Conflicts
-- **Risk**: Overlapping responsibilities causing confusion
-- **Mitigation**: Clear RACI matrices, regular role clarification sessions, escalation path documentation
-
-## Adaptations for Different Contexts
-
-### For Startups / MVP
-- Reduce verification layers to essentials (lint → test → basic security)
-- Use fewer specialized agents (combine roles)
-- Simplify compliance requirements to core security practices
-- Focus on speed of iteration with basic safety nets
-
-### For Regulated Industries (Finance, Healthcare)
-- Add additional verification layers (formal methods, third-party audits)
-- Increase documentation and evidence requirements
-- Implement stricter change control procedures
-- Add specialized compliance officer agents
-
-### For Open Source Projects
-- Replace enterprise MCP servers with public equivalents
-- Reduce specialization (community members wear multiple hats)
-- Increase transparency in decision-making
-- Focus on educational components in agent interactions
-
-## Related Scenarios
-- [[Multi Agent Development]] - For team-based agent collaboration
-- [[Autonomous Test Fixer]] - For self-healing quality assurance
-- [[Security-Focused Development]] - For enhanced security practices
+> [!note] Rewritten 2026-09-04
+> The earlier version was uncited. This one is built from the only detailed public account of
+> a team actually doing it: [[Source - OpenAI Harness Engineering]], plus the failure modes
+> from [[Source - Anthropic Effective Harnesses for Long-Running Agents]].
 
 ---
+
+## The one published data point `[FACT]`
+
+Five months, one internal product, **zero lines of manually-written code**:
+
+| | |
+|---|---|
+| Codebase | ~1,000,000 lines |
+| PRs merged | ~1,500 |
+| Team | 3 engineers, growing to 7 |
+| Throughput | 3.5 PRs per engineer per day |
+| Speed vs hand-writing | ~1/10th the time |
+| Longest single agent run | 6+ hours |
+
+> [!warning] Do not read this as a benchmark
+> The post says plainly that this "depends heavily on the specific structure and tooling of
+> this repository and **should not be assumed to generalize without similar investment**."
+> Copy the practices; do not quote the throughput.
+
+---
+
+## The seven things that made it work
+
+### 1. The repository is the system of record `[FACT]`
+
+> "From the agent's point of view, anything it can't access in-context while running
+> effectively doesn't exist."
+
+Slack threads, Google Docs and people's heads are invisible. The architectural decision made
+in a meeting must land in `docs/` or it did not happen. See
+[[The Repository as System of Record]].
+
+### 2. A map, not a manual `[FACT]`
+
+`AGENTS.md` at ~100 lines as a table of contents; `docs/` as the real knowledge base, read on
+demand. The one-big-file approach failed four documented ways: context crowding, guidance
+dilution, instant rot, unverifiability. See [[Instruction File Design]].
+
+### 3. Invariants enforced mechanically, implementation left free `[FACT]`
+
+A rigid layered architecture — `Types → Config → Repo → Service → Runtime → UI`, with
+cross-cutting concerns entering only through an explicit `Providers` interface — **enforced by
+custom linters and structural tests**, themselves agent-generated.
+
+> "This is the kind of architecture you usually postpone until you have hundreds of engineers.
+> With coding agents, it's an early prerequisite: the constraints are what allows speed without
+> decay."
+
+And the boundary is deliberate: they require parsing at the boundary but do **not** prescribe
+the library. "Enforce boundaries centrally, allow autonomy locally."
+
+### 4. Failures teach `[FACT]`
+
+> "Because the lints are custom, we write the error messages to inject remediation
+> instructions into agent context."
+
+Independently arrived at by Thoughtworks two months later. See [[Feedback Quality]].
+
+### 5. The running application is legible `[FACT]`
+
+- app **bootable per git worktree** — one instance per change
+- **Chrome DevTools Protocol** in the agent runtime, with DOM/screenshot/navigation skills
+- **per-worktree ephemeral observability**: logs via LogQL, metrics via PromQL
+
+This is what makes *"ensure service startup completes in under 800ms"* a checkable requirement
+rather than a wish. See [[Agent Observability]] and [[Worktree Isolation]].
+
+### 6. Review is agent-to-agent, and merge philosophy changes `[FACT]`
+
+Codex reviews its own changes locally, requests additional specific agent reviews locally and
+in the cloud, and iterates "until all agent reviewers are satisfied" — a
+[[Ralph Loop|Ralph Wiggum loop]], named as such in the post. Humans may review but are not
+required to.
+
+Merge gates are minimal, PRs short-lived, flakes handled with a re-run:
+
+> "In a system where agent throughput far exceeds human attention, corrections are cheap, and
+> waiting is expensive. **This would be irresponsible in a low-throughput environment.**"
+
+`[OPINION]` This is the most-quoted-out-of-context sentence in the field. It presupposes
+agent-driven review, mechanical invariants, and continuous cleanup. Without all three, it is
+simply lowered standards.
+
+### 7. Entropy is fought continuously `[FACT]`
+
+Agents replicate existing patterns, including bad ones, so drift is guaranteed. The team spent
+**every Friday — 20% of the week — cleaning up "AI slop"** before automating it: "golden
+principles" encoded in the repo, plus background tasks on a cadence that scan for deviations,
+update quality grades, and open targeted refactoring PRs, most automergeable in under a minute.
+
+> "This functions like garbage collection. Technical debt is like a high-interest loan."
+
+See [[Harness Debt and Garbage Collection]].
+
+---
+
+## Human approval, placed deliberately
+
+`[INFERENCE]` Combining both primary sources, the humans in this system do four things and
+only four:
+
+1. **Prioritise** — decide what is worth building.
+2. **Translate user feedback into acceptance criteria** — the feature list.
+3. **Validate outcomes** — spot-check against reality.
+4. **Repair the environment** — when the agent struggles, ask what capability is missing, and
+   have the agent write the fix.
+
+`[FACT]` The escalation rule in their autonomy ladder: "escalate to a human **only when
+judgment is required**." Not when the task is hard — when it needs a decision the repository
+cannot supply.
+
+---
+
+## The readiness checklist
+
+Before letting agents write most of your code, all of these should be true:
+
+| | Check |
+|---|---|
+| ☐ | One command verifies the project end to end |
+| ☐ | Architectural invariants are enforced by a program, not a paragraph |
+| ☐ | Check failures carry remediation text |
+| ☐ | The app is bootable and inspectable per worktree |
+| ☐ | Done is defined as a machine-checkable artefact |
+| ☐ | Review is done by something that did not write the code |
+| ☐ | Unattended work is isolated, budgeted, and committed before it starts |
+| ☐ | Something scans for drift on a schedule |
+| ☐ | The escalation path produces a written question, not a guess |
+
+`[INFERENCE]` A "no" anywhere above is not a reason to avoid agents — it is the next thing to
+build. Order them by [[When Not to Build a Harness|the investment ranking]]: feedback first.
+
+---
+
+## Related
+
+- [[Coding Agent Harness]] · [[Harness Architecture]] · [[Harness Debt and Garbage Collection]]
+- [[Autonomous Test Fixer]] · [[Levels of Agent Autonomy]] · [[Human In The Loop]]
+- [[Source - OpenAI Harness Engineering]] · [[Scenarios MOC]]
