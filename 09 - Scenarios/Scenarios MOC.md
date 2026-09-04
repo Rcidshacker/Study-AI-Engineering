@@ -22,13 +22,22 @@ remove it, rather than describing a capability.
 
 ---
 
-## Written
+## The scenarios
 
 | Scenario | The failure it addresses | Note |
 |---|---|---|
-| **Autonomous test fixing** | an agent must inspect → diagnose → modify → test → analyse → retry → verify → **stop**, unattended | [[Autonomous Test Fixer]] |
-| **Production coding agent** | agents writing most of a real codebase without it rotting | [[Production Coding Agent]] |
 | **Building a feature safely** | modifying a live repository without collateral damage | [[Coding Agent Harness]] — the reference layout, built in four stages |
+| **The agent edits the wrong files** | scope expressed as a sentence rather than a boundary | [[Sandboxing and Permissions]] — layered controls, weakest to absolute |
+| **The agent writes code but doesn't verify it** | unit tests pass while the feature is broken end to end | [[The Verification Gap]] — the four moves, by return |
+| **Autonomous test fixing** | inspect → diagnose → modify → test → analyse → retry → verify → **stop**, unattended | [[Autonomous Test Fixer]] |
+| **Research agent building a knowledge base** | fluent, confident, fabricated output that nothing contradicts | [[Research Agent]] |
+| **Skill routing at scale** | 20+ skills, and what actually breaks (it is not intent matching) | [[Skill Routing]] |
+| **Multi-agent coding team** | planner, researcher, coder, tester, reviewer — and which roles survive scrutiny | [[Multi Agent Coding System]] |
+| **Production coding agent** | agents writing most of a real codebase without it rotting | [[Production Coding Agent]] |
+
+`[INFERENCE]` Read them in that order. Each assumes the controls built by the one before, and
+the ordering matches the investment ranking in [[When Not to Build a Harness]] — feedback
+first, orchestration last.
 
 ---
 
@@ -47,23 +56,16 @@ Each has a note; the scenarios are where they get composed into a working setup.
 
 ---
 
-## Not yet written
+## Three scenarios that resolved to "build less"
 
-Listed honestly rather than linked, so the graph has no dead ends. Each is a real scenario from
-the original research brief that this vault has the material for but has not yet composed:
+`[INFERENCE]` Worth noting together, because the pattern repeats: the research kept ending
+somewhere cheaper than the question assumed.
 
-- **Skill routing at scale** — 20+ skills, and the question of whether intent → skill → tools
-  needs a graph, a routing layer, or nothing. `[INFERENCE]` The likely answer is *nothing*:
-  skills already load on relevance, and a hand-built router is a layer competing with the model
-  at something the model does well. The exception is when routing must be **deterministic** for
-  compliance or cost reasons.
-- **Multi-agent coding team** — planner, researcher, coder, tester, reviewer: how they
-  communicate and who controls the loop. Design constraints are in [[Agent Orchestration]] and
-  [[Claude Code Graphs]]; the four hard questions are division of labour, parallelism,
-  rollback, and handoff.
-- **Research agent producing a knowledge base** — the harness and loop for exactly the task
-  that produced this vault. The failure it must prevent has already been demonstrated here:
-  [[Research Integrity in Agent-Assisted Research]].
+| Question | Expected answer | What the sources support |
+|---|---|---|
+| How do I route 20+ skills? | a router or a skill graph | **Nothing.** The router exists and is the model. The real constraint is a documented **description budget** at 1% of the context window — [[Skill Routing]] |
+| How do five agents divide the work? | a five-role pipeline | **Two roles.** Coder plus a fresh-context reviewer; a researcher when context demands it. Tester and planner rarely justify a separate agent — [[Multi Agent Coding System]] |
+| How do I make research reliable? | better prompts and more sources | **A URL liveness check.** One command, under a minute, catching what an hour of fluent writing produced — [[Research Agent]] |
 
 ---
 

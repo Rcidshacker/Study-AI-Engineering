@@ -78,7 +78,8 @@ Cumulative, not successive. Each layer keeps the ones below it.
 [[Claude Code Implementation Notes]] — full map at [[Claude Code MOC]]
 
 ### Applied
-[[Coding Agent Harness]] · [[Autonomous Test Fixer]] · [[Production Coding Agent]] ·
+[[Coding Agent Harness]] · [[Autonomous Test Fixer]] · [[Skill Routing]] ·
+[[Research Agent]] · [[Multi Agent Coding System]] · [[Production Coding Agent]] ·
 [[Scenarios MOC]]
 
 ### Comparisons

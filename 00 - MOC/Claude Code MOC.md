@@ -34,6 +34,7 @@ updated: 2026-09-04
 | [[Claude Code Hooks]] | the highest-leverage surface: handlers, cadences, events |
 | [[Claude Code Implementation Notes]] | skills, MCP, subagents, rules, memory — the working details |
 | [[Coding Agent Harness]] | the reference `.claude/` layout, built in four stages |
+| [[Skill Routing]] | what actually breaks at 20+ skills, and the settings that fix it |
 
 ---
 
